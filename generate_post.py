@@ -51,7 +51,7 @@ def generate_post(messages: list[dict]) -> str:
     response = client.chat.completions.create(
         model="llama-3.3-70b-versatile",
         messages=messages,
-        max_tokens=500,
+        max_tokens=600,
         temperature=0.85,
     )
     post = response.choices[0].message.content.strip()

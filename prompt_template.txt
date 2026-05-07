@@ -13,28 +13,63 @@ Read the weekly notes. Then ask yourself:
 - Can I connect this to something viral — a tool, a workflow, a "I automated X and saved Y hours" story?
 - How does this relate to automating the act of learning itself? (building tools that learn for you, summarising your week automatically, using AI to close knowledge gaps faster)
 
-Pick ONE specific angle. The angle must be concrete — not "AI is changing everything" but "I built a script that reads my notes and posts for me, here's what I learned debugging it."
+Pick ONE specific angle. Must be concrete — not "AI is changing everything" but "I built a script that reads my notes and posts for me, here's what I learned debugging it."
 
 ---
 
 PHASE 2 — WRITE THE POST
 
-Now write the LinkedIn post using the angle you found. Rules:
+Now write the post using the angle you found. Follow ALL rules below exactly.
 
 STYLE:
 - Tone: personal, first-person, warm — like texting a smart friend who's also into this stuff
 - NO corporate buzzwords: leverage, synergy, game-changer, rockstar, guru, disrupt, innovative, cutting-edge
 - NO vague hype: "AI is the future", "this will change everything", "mind-blowing"
-- Sound like someone who actually built or tried something, not someone narrating a trend
+- Sound like someone who actually built or tried something
 
-STRUCTURE:
-1. Hook (1 line): Stop the scroll. Use a specific number, a candid failure, a counterintuitive result, or a "I did X so you don't have to" opener. No "I'm excited to share..."
-2. The story (3-5 lines): What you actually did or learned. Be specific — name the tool, the error message, the moment it clicked. Show texture.
-3. The insight (1-2 lines): The one thing you'd tell someone starting from scratch. Make it actionable, not philosophical.
-4. Closing question (1 line): Genuine, specific, invites people who've done something similar. Not "what do you think?"
-5. Hashtags: 4-5 on the last line. Must include at least one of: #AIAutomation #WorkflowAutomation #BuildInPublic #LearnInPublic #AITools. No #hustle #grind #blessed.
+FORMATTING RULES (non-negotiable):
 
-LENGTH: 150-250 words total. Count carefully.
+1. LENGTH: 700–1,500 characters total. Count characters, not words.
+
+2. HOOK (line 1): Bold, under 8 words, includes a number or "How I". "How I" beats "How to" — readers want real stories. No "I'm excited to share..."
+
+3. REHOOK (line 2, after one blank line): Challenge or build on the hook. Sets up what's coming. One sentence.
+
+4. WHITESPACE: Break lines often. Each thought gets its own line. Never more than 2 sentences on a single line. Empty line between every section.
+
+5. WAVE STRUCTURE: Vary line lengths to guide the eye. Short line. Then a slightly longer one that adds detail. Then short again. Repeat. This makes the post easy to skim.
+
+6. SHORT SENTENCES: Every sentence under 12 words. Cut ruthlessly.
+
+7. NO ORPHAN WORDS: Never leave a single word alone on a line. If a line ends with one word, rewrite it.
+
+8. TOPIC CHUNKING: Group related thoughts together. Use a single connector word or line to shift between ideas (e.g. "Here's what I found:" / "The weird part?" / "So I tried something:").
+
+9. POWER ENDING: Second-to-last section = one bold, memorable takeaway. Make it specific. Make it stick.
+
+10. CTA: Final line = a genuine question. Specific, not rhetorical. Invites people who've done something similar. Increases comments 20–40%.
+
+11. HASHTAGS: Last line, 4–5 tags. Must include at least one of: #AIAutomation #WorkflowAutomation #BuildInPublic #LearnInPublic #AITools. No #hustle #grind #blessed.
+
+---
+
+STRUCTURE TEMPLATE (use this skeleton):
+
+[HOOK — under 8 words, bold-worthy, has a number or "How I"]
+
+[REHOOK — one line, challenges or builds on hook]
+
+[STORY — 3–5 short lines. Name the tool, the error, the moment it clicked. Real texture.]
+
+[CONNECTOR LINE — shift to insight]
+
+[INSIGHT — 2–3 short lines. What you'd tell someone starting from scratch. Actionable.]
+
+[POWER ENDING — 1 bold, specific takeaway]
+
+[CTA — 1 genuine question]
+
+#hashtag1 #hashtag2 #hashtag3 #hashtag4
 
 ---
 

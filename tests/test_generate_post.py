@@ -54,24 +54,35 @@ def test_load_past_posts_missing_dir(tmp_path):
     assert result == []
 
 
-def test_build_prompt_injects_notes_and_past_posts():
-    from generate_post import build_prompt
+def test_build_messages_injects_notes_and_past_posts():
+    from generate_post import build_messages
     template = "PAST:\n{past_posts}\n\nNOTES:\n{notes}"
-    result = build_prompt(template, "- learned X", ["--- 2026-04-22.txt ---\nold post"])
-    assert "- learned X" in result
-    assert "old post" in result
-    assert "{notes}" not in result
-    assert "{past_posts}" not in result
+    messages = build_messages(template, "- learned X", ["--- 2026-04-22.txt ---\nold post"])
+    assert len(messages) == 2
+    assert messages[0]["role"] == "system"
+    assert messages[1]["role"] == "user"
+    system_content = messages[0]["content"]
+    user_content = messages[1]["content"]
+    assert "old post" in system_content
+    assert "{past_posts}" not in system_content
+    assert "- learned X" in user_content
 
 
-def test_build_prompt_no_past_posts():
-    from generate_post import build_prompt
+def test_build_messages_no_past_posts():
+    from generate_post import build_messages
     template = "PAST:\n{past_posts}\n\nNOTES:\n{notes}"
-    result = build_prompt(template, "- learned X", [])
-    assert "No past posts yet" in result
-    assert "- learned X" in result
-    assert "{notes}" not in result
-    assert "{past_posts}" not in result
+    messages = build_messages(template, "- learned X", [])
+    system_content = messages[0]["content"]
+    user_content = messages[1]["content"]
+    assert "No past posts yet" in system_content
+    assert "{past_posts}" not in system_content
+    assert "- learned X" in user_content
+
+
+def test_build_messages_exits_if_placeholders_missing():
+    from generate_post import build_messages
+    with pytest.raises(SystemExit):
+        build_messages("no placeholders here", "- notes", [])
 
 
 def test_build_html_email_contains_post_and_date():

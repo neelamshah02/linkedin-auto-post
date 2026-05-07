@@ -33,21 +33,26 @@ def load_past_posts(past_posts_dir: Path) -> list[str]:
     return result
 
 
-def build_prompt(template: str, notes: str, past_posts: list[str]) -> str:
+def build_messages(template: str, notes: str, past_posts: list[str]) -> list[dict]:
     if "{notes}" not in template or "{past_posts}" not in template:
         print("ERROR: prompt_template.txt must contain {notes} and {past_posts} placeholders.", file=sys.stderr)
         sys.exit(1)
     past_block = "\n\n".join(past_posts) if past_posts else "(No past posts yet)"
-    return template.replace("{past_posts}", past_block).replace("{notes}", notes)
+    system_prompt = template.replace("{past_posts}", past_block).replace("{notes}", "")
+    user_message = f"THIS WEEK'S NOTES:\n{notes}"
+    return [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_message},
+    ]
 
 
-def generate_post(prompt: str) -> str:
+def generate_post(messages: list[dict]) -> str:
     client = Groq(api_key=os.environ["GROQ_API_KEY"])
     response = client.chat.completions.create(
         model="llama-3.3-70b-versatile",
-        messages=[{"role": "user", "content": prompt}],
-        max_tokens=400,
-        temperature=0.8,
+        messages=messages,
+        max_tokens=500,
+        temperature=0.85,
     )
     post = response.choices[0].message.content.strip()
     if not post:
@@ -111,8 +116,8 @@ def main():
     template = read_required_file(root / "prompt_template.txt")
     past_posts = load_past_posts(root / "past_posts")
 
-    prompt = build_prompt(template, notes, past_posts)
-    post = generate_post(prompt)
+    messages = build_messages(template, notes, past_posts)
+    post = generate_post(messages)
 
     date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     send_email(post, date_str)

@@ -22,7 +22,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install groq
+        run: pip install -r requirements.txt
 
       - name: Generate and email post
         env:

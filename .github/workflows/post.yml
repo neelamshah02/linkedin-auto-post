@@ -1,0 +1,41 @@
+name: Generate LinkedIn Post
+
+on:
+  schedule:
+    - cron: "0 7 * * 2"  # Every Tuesday at 07:00 UTC
+  workflow_dispatch:       # Manual trigger for testing
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install groq
+
+      - name: Generate and email post
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          TO_EMAIL: ${{ secrets.TO_EMAIL }}
+        run: python generate_post.py
+
+      - name: Commit archived post
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add past_posts/
+          git diff --cached --quiet || git commit -m "chore: archive linkedin post $(date -u +%Y-%m-%d)"
+          git push

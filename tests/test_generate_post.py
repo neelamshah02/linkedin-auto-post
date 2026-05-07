@@ -60,6 +60,8 @@ def test_build_prompt_injects_notes_and_past_posts():
     result = build_prompt(template, "- learned X", ["--- 2026-04-22.txt ---\nold post"])
     assert "- learned X" in result
     assert "old post" in result
+    assert "{notes}" not in result
+    assert "{past_posts}" not in result
 
 
 def test_build_prompt_no_past_posts():
@@ -68,6 +70,8 @@ def test_build_prompt_no_past_posts():
     result = build_prompt(template, "- learned X", [])
     assert "No past posts yet" in result
     assert "- learned X" in result
+    assert "{notes}" not in result
+    assert "{past_posts}" not in result
 
 
 def test_build_html_email_contains_post_and_date():
@@ -95,4 +99,6 @@ def test_archive_post_writes_file(tmp_path):
 def test_archive_post_creates_dir_if_missing(tmp_path):
     from generate_post import archive_post
     out = archive_post("My post text", tmp_path / "new_dir", "2026-05-07")
+    assert out.parent.is_dir()
     assert out.exists()
+    assert out.read_text() == "My post text"

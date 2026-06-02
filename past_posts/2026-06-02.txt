@@ -1,0 +1,16 @@
+**I automated APIs**
+ 
+I used Microsoft Power Automate.
+
+It simplified my workflows.
+
+Custom connectors helped.
+
+The weird part? 
+Event-driven triggers worked.
+
+**I saved time** 
+with automation.
+
+What's your experience with API automation?
+#AIAutomation #WorkflowAutomation #MicrosoftPowerAutomate #APIOrchestration #CustomConnectors
